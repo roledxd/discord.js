@@ -445,9 +445,9 @@ class MessageEmbed {
    * @param  {...EmbedFieldData|EmbedFieldData[]} fields Fields to normalize
    * @returns {EmbedField[]}
    */
-  static normalizeFields(...fields) {
+    static normalizeFields(...fields) {
     return fields
-      .flat(2)
+      .reduce((acc, val) => acc.concat(val), [])
       .map(field =>
         this.normalizeField(
           field && field.name,
